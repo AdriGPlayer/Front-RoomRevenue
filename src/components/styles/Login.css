@@ -1,0 +1,460 @@
+.container-login {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./../../assets/backgroundLogin.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+
+    height: 100vh;
+    margin: 0;
+  }
+
+
+  .modal-content.shake {
+    animation: shake 0.5s;
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+  
+
+  /* ------------------LOGIN------------------------- */
+.singup {
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    font-weight: bold;
+    font-size: x-large;
+    margin-top: 1.5em;
+    margin-bottom: -50px;
+  }
+  
+  .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 350px;
+    width: 500px;
+    flex-direction: column;
+    gap: 35px;
+    border-radius: 15px;
+    background: #00000084;
+
+    border-radius: 8px;
+  }
+  
+  .inputBox {
+    position: relative;
+    width: 250px;
+    margin-top: 80px;
+  }
+  
+  .inputBox input {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1em;
+    background: transparent;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    transition: 0.1s;
+    border-bottom-left-radius: 8px;
+  }
+  
+  .inputBox span {
+    margin-top: 5px;
+    position: absolute;
+    left: 0;
+    transform: translateY(-4px);
+    margin-left: 10px;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 12px;
+    color: #ffffff;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 3px;
+    border-radius: 8px;
+  }
+  
+  .inputBox input:valid~span,
+  .inputBox input:focus~span {
+    transform: translateX(113px) translateY(-15px);
+    font-size: 0.8em;
+    padding: 5px 10px;
+    background: #000000;
+    letter-spacing: 0.2em;
+    color: #ffffff;
+    border: 2px solid #4dd4cf;
+  
+  }
+  
+
+  .inputBox input:valid,
+  .inputBox input:focus
+ {
+    border: 2px solid #4dd4cf;
+    border-radius: 8px;
+  }
+  
+  .enter {
+
+    height: 45px;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.5s;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 70px;
+    margin-bottom: 3em;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .enter:hover {
+    background-color: rgb(58, 58, 58);
+    color: white;
+    border-color: #4dd4cf;
+  }
+  .cancelar{
+    
+    height: 45px;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    background-color: transparent;
+    transition: 0.5s;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 70px;
+    margin-bottom: 3em;
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+  .cancelar:hover{
+    background-color: rgb(95, 18, 18);
+  }
+form{
+    text-align: center;
+}
+
+
+  
+  
+ :root {
+  --bg-primary: #021024;
+  --bg-secondary: #031633;
+  --bg-tertiary: #041E42;
+  --text-primary: #ffffff;
+  --text-secondary: #a3a3a3;
+  --accent: #0466c8;
+  --hover: #052c65;
+  --hover-item: #0466c8;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+.container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  min-height: 100vh;
+}
+.sidebar {
+  background-color: var(--bg-secondary);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--accent);
+} .menu-item {
+  display: block;
+  padding: 10px;
+  color: var(--text-primary);
+  text-decoration: none;
+  margin-bottom: 10px;
+  background-color: var(--bg-tertiary);
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.menu-item:hover {
+  background-color: var(--hover);
+}
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+.menu-item:hover .submenu {
+  max-height: 300px; /* Ajusta este valor según sea necesario */
+}
+.submenu-item {
+  display: block;
+  padding: 8px 10px 8px 5px;
+  margin-top: 10px;
+  margin-left: 25px;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border-radius: 10px;
+}
+.submenu-item:hover {
+  background-color: var(--hover-item);
+}
+.main-content {
+  padding: 2rem;
+}
+h1, h2 {
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--bg-tertiary);
+}
+th {
+  background-color: var(--bg-tertiary);
+  color: var(--accent);
+}
+tr:hover {
+  background-color: var(--bg-secondary);
+}
+.action-btn {
+  background-color: var(--accent);
+  color: var(--text-primary);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 0.5rem;
+}
+.action-btn:hover {
+  background-color: var(--hover);
+}
+.add-user-btn {
+  background-color: var(--accent);
+  color: var(--text-primary);
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.add-user-btn:hover {
+  background-color: var(--hover);
+}
+.logout-btn {
+  margin-top: auto;
+  background-color: var(--accent);
+  color: var(--text-primary);
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logout-btn:hover {
+  background-color: var(--hover);
+}
+.logout-btn i {
+  margin-right: 0.5rem;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+.dashboard-item {
+  background-color: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.dashboard-item:hover {
+  transform: translateY(-5px);
+}
+.dashboard-item h3 {
+  margin-top: 0;
+  color: var(--accent);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.dashboard-item p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+.dashboard-item .subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+
+
+
+
+/*------------------------ Modal--------------------------- */
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.492);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.modal-content {
+  background-color: var(--bg-primary);
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: solid white 1px;
+  border-radius: 25px;
+}
+
+
+
+
+
+
+
+
+/* --------------inputs-------------------------- */
+
+
+.inputBox {
+  position: relative;
+  width: 250px;
+  margin-top: 50px;
+}
+
+.inputBox input {
+  width: 100%;
+  padding: 6px;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1em;
+  background: transparent;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transition: 0.1s;
+  border-bottom-left-radius: 8px;
+}
+
+.inputBox span {
+  margin-top: 5px;
+  position: absolute;
+  left: 0;
+  transform: translateY(-4px);
+  margin-left: 10px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 12px;
+  color: #ffffff;
+  text-transform: uppercase;
+  transition: 0.5s;
+  letter-spacing: 3px;
+  border-radius: 8px;
+}
+
+.inputBox input:valid~span,
+.inputBox input:focus~span {
+  transform: translateX(113px) translateY(-15px);
+  font-size: 0.8em;
+  padding: 5px 10px;
+  background: #000000;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  border: 2px solid #4dd4cf;
+
+}
+
+
+.inputBox input:valid,
+.inputBox input:focus
+{
+  border: 2px solid #4dd4cf;
+  border-radius: 8px;
+}
+
+.enter {
+
+  height: 45px;
+  width: 100px;
+  border-radius: 5px;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.5s;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 70px;
+  margin-bottom: 3em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.enter:hover {
+  background-color: rgb(58, 58, 58);
+  color: white;
+  border-color: #4dd4cf;
+}
+
+.cancelar{
+  margin-right: 20px;
+}
+
+
