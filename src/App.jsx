@@ -5,6 +5,8 @@ import PanelGeneral from "./components/pages/GerenteGeneral/PanelGeneral";
 
 import LayOut from "./components/pages/GerenteGeneral/GestionPersonal/LayOut";
 import LayOutReservas from "./components/pages/GerenteGeneral/GestionReservas/LayOutReservas";
+import LayOutHabitaciones from "./components/pages/GerenteGeneral/GestionHabitaciones/LayOutHabitaciones";
+import LayOutRecepcion from "./components/pages/GerenteGeneral/Recepcion/LayOutRecepcion";
 
 function App() {
   return (
@@ -29,6 +31,15 @@ function App() {
 
           {/* Gestionar reservas */}
           <Route path="/gestionar-reservas/list" element={<LayOutReservas />} />
+
+          {/* Gestionar Habitaciones */}
+          <Route
+            path="/gestionar-habitaciones"
+            element={<LayOutHabitaciones />}
+          />
+
+          {/* Recepcion */}
+          <Route path="/recepcion" element={<LayOutRecepcion />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

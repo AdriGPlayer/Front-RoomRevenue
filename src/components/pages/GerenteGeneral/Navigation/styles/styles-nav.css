@@ -213,6 +213,20 @@ tr:hover {
   flex-direction: column; /* Asegura que el contenido esté en columna */
 }
 
+.modal-content-user {
+  background-color: var(--bg-primary);
+  padding: 20px;
+  border-radius: 5px;
+  width: 500px;
+  height: 300px; /* Esto limita la altura del modal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: solid white 1px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column; /* Asegura que el contenido esté en columna */
+}
+
+
 .modal-content-habitacion table {
   width: 100%; /* Asegura que la tabla ocupe todo el ancho */
   margin-bottom: 20px;
@@ -222,6 +236,8 @@ tr:hover {
   overflow-y: auto; /* Habilita el scroll vertical */
   max-height: 300px; /* Ajusta la altura máxima del contenedor */
 }
+
+
 
 .table-container table {
   width: 100%; /* Asegura que la tabla ocupe todo el ancho */
@@ -237,7 +253,7 @@ tr:hover {
   width: 8px; 
 }
 
-.table-container::-webkit-scrollbar-track {
+.table-container::-webkit-scrollbar-track  {
   background-color: var(--bg-tertiary);
   border-radius: 10px; 
 }
@@ -251,10 +267,15 @@ tr:hover {
 .table-container::-webkit-scrollbar-thumb:hover {
   background-color: var(--scroll-thumb-hover); 
 }
+
+.table-container-expand{
+  max-height: 300px;
+
+}
 .asignar{
   background-color: transparent;
   color: white;
-  height: 25px;
+  height: 40px;
   width: 100px;
   border-radius: 5px;
   border: solid 1px white;

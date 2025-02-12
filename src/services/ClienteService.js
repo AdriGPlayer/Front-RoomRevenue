@@ -11,6 +11,10 @@ class ClienteService {
     getByEmail(email) {
         return axios.get(`${BASE_URL}/getClientePorEmail/${email}`);
     }
+    getById(id){
+        return axios.get(`${BASE_URL}/getClienteById/${id}`);
+      
+    }
 
     
 

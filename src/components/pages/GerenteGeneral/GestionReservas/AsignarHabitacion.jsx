@@ -12,7 +12,7 @@ export default function AsignarHabitacion({ huesped, reserva, closeModal }) {
 
   useEffect(() => {
     // Llamada al servicio para obtener las habitaciones
-    HabitacionService.getAllHabitaciones()
+    HabitacionService.getHabitacionesLimpias()
       .then((response) => {
         setHabitaciones(response.data);
       })
@@ -32,9 +32,6 @@ export default function AsignarHabitacion({ huesped, reserva, closeModal }) {
         return 0;
     }
   };
-  const guardarCliente = () => {
-    ClienteService.postCliente(huesped);
-  };
 
   const modificarTarifa = (numHabitacion) => {
     // Buscar la habitación seleccionada
@@ -53,13 +50,38 @@ export default function AsignarHabitacion({ huesped, reserva, closeModal }) {
   };
 
   const asignarHabitacion = async (numHabitacion) => {
-    guardarCliente();
-    const email = huesped.email;
-    const response = await ClienteService.getByEmail(email);
-    const cliente = response.data;
-    const idCliente = cliente.id;
-    modificarTarifa(numHabitacion);
-    ReservaService.postReserva(idCliente, numHabitacion, reserva);
+    try {
+      // Verifica si el cliente ya existe
+      let cliente = null;
+      try {
+        const response = await ClienteService.getByEmail(huesped.email);
+        cliente = response.data;
+      } catch (error) {
+        console.error(error);
+        console.warn("Cliente no encontrado, se guardará como nuevo");
+      }
+
+      // Si el cliente no existe, guárdalo
+      if (!cliente) {
+        await ClienteService.postCliente(huesped);
+        const response = await ClienteService.getByEmail(huesped.email);
+        cliente = response.data;
+      }
+
+      const idCliente = cliente.id;
+
+      // Modificar la tarifa de la reserva según el tipo de habitación
+      modificarTarifa(numHabitacion);
+
+      // Guardar la reserva
+      await ReservaService.postReserva(idCliente, numHabitacion, reserva);
+
+      // Cierra el modal
+      setIsVisible(false);
+      setTimeout(closeModal, 500);
+    } catch (error) {
+      console.error("Error al asignar habitación:", error);
+    }
   };
 
   const handleCancel = () => {

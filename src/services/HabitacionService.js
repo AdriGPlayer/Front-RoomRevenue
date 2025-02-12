@@ -9,6 +9,12 @@ class HabitacionService{
     getHabitacionByNumHabitacion(numHabitacion){
         return axios.get(`${BASE_URL}/getHabitacion/${numHabitacion}`);
     }
+    getHabitacionesLimpias(){
+        return axios.get(`${BASE_URL}/getHabtacionesLimpias`);
+    }
+    updateHabitacion(id, habitacion) {
+        return axios.put(`${BASE_URL}/putHabitacion/${id}`, habitacion);
+      }
 
 
 }

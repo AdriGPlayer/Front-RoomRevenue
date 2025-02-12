@@ -11,6 +11,15 @@ class ReservaService{
     getAllReservas() {
         return axios.get(`${BASE_URL}/getReserva`);
       }
+
+    confirmarReserva(id){
+        return axios.put(`${BASE_URL}/confirmarReserva/${id}`);
+    }
+    eliminarReserva(id){
+        return axios.delete(`${BASE_URL}/deleteReserva/${id}`);
+
+    }
+
 }
 
 export default new ReservaService(); // Asegúrate de que sea una instancia

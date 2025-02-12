@@ -31,11 +31,11 @@ export default function NavComponent() {
         <a href="/gestionar-reservas/list" className="menu-item">
           <i className="fas fa-calendar-check"></i> Gestionar Reservas
         </a>
-        <a href="#" className="menu-item">
+        <a href="/gestionar-habitaciones" className="menu-item">
           <i className="fas fa-bed"></i> Gestionar Habitaciones
         </a>
-        <a href="#" className="menu-item">
-          <i className="fas fa-cog"></i> Configuración
+        <a href="/recepcion" className="menu-item">
+          <i className="fas fa-concierge-bell"></i> Recepción
         </a>
       </nav>
     </div>
