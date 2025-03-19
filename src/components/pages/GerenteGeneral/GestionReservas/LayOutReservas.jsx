@@ -7,7 +7,7 @@ export default function LayOutReservas() {
       <div className="container">
         <SideBar />
         <div className="main-content">
-          <ListReservas />
+          <ListReservas mostrarAcciones={true} title={"Gestión de Reservas"} />
         </div>
       </div>
     </>

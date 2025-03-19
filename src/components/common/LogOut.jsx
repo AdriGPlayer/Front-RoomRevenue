@@ -4,6 +4,7 @@ import "./Styles/LogOut.css";
 export default function LogOut() {
   const navigate = useNavigate();
   const logout = () => {
+    localStorage.clear();
     navigate("/");
   };
   return (

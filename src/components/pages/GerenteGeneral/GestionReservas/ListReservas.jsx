@@ -6,8 +6,9 @@ import AsignarHabitacion from "./AsignarHabitacion";
 import ReservaService from "../../../../services/ReservaService";
 import ListHuesped from "./ListHuesped";
 import ListHabitacion from "./ListHabitacion";
+import PropTypes from "prop-types";
 
-export default function ListReservas() {
+export default function ListReservas({ mostrarAcciones, title }) {
   const [isModalHuespedOpen, setIsModalHuespedOpen] = useState(false);
   const [isModalReservaOpen, setIsModalReservaOpen] = useState(false);
   const [isModalHabitacionesOpen, setIsModalHabitacionesOpen] = useState(false);
@@ -70,7 +71,7 @@ export default function ListReservas() {
             duration: 0.5,
           }}
         >
-          <h2>Gestión de Reservas</h2>
+          <h2>{title}</h2>
         </motion.div>
       </AnimatePresence>
       <AnimatePresence>
@@ -141,74 +142,87 @@ export default function ListReservas() {
             duration: 0.8,
           }}
         >
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Fecha Entrada</th>
-                <th>Fecha Salida</th>
-                <th>Número de Huéspedes</th>
-                <th>Estado de Reserva</th>
-                <th>Tarifa</th>
-                <th>Huesped</th>
-                <th>Habitacion</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reservas.map((reserva) => (
-                <tr key={reserva.id}>
-                  <td>{reserva.id}</td>
-                  <td>{reserva.fechaEntrada}</td>
-                  <td>{reserva.fechaSalida}</td>
-                  <td>{reserva.numeroHuespedes}</td>
-                  <td>{reserva.estatus}</td>
-                  <td>${reserva.tarifa.toFixed(2)}</td>
-                  <td>
-                    <button
-                      className="btn btn-edit"
-                      onClick={() => {
-                        setIdCliente(reserva.id_cliente);
-                        toggleModal(setIsModalListHuesped, true);
-                      }}
-                    >
-                      <i className="fas fa-users" />
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      className="btn btn-edit"
-                      onClick={() => {
-                        setNumHabitacion(reserva.numHabitacion);
-                        toggleModal(setIsModalListHabitacion, true);
-                      }}
-                    >
-                      <i className="fas fa-bed" />
-                    </button>
-                  </td>
-                  <td>
-                    <button className="btn btn-edit">
-                      <i className="fas fa-edit" />
-                    </button>
-                    <button
-                      className="btn btn-edit"
-                      onClick={() => confirmarReserva(reserva.id)}
-                    >
-                      <i className="fas fa-check" />
-                    </button>
-                    <button
-                      className="btn btn-delete"
-                      onClick={() => eliminarReserva(reserva.id)}
-                    >
-                      <i className="fas fa-trash-alt" />
-                    </button>
-                  </td>
+          <div className="table-container ">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Fecha Entrada</th>
+                  <th>Fecha Salida</th>
+                  <th>Número de Huéspedes</th>
+                  <th>Estado de Reserva</th>
+                  <th>Tarifa</th>
+                  <th>Huesped</th>
+                  <th>Habitacion</th>
+                  {mostrarAcciones && <th>Acciones</th>}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {reservas
+                  .filter((reserva) => reserva.estatus !== "COMPLETADA") // Filtrar las reservas completadas
+                  .map((reserva) => (
+                    <tr key={reserva.id}>
+                      <td>{reserva.id}</td>
+                      <td>{reserva.fechaEntrada}</td>
+                      <td>{reserva.fechaSalida}</td>
+                      <td>{reserva.numeroHuespedes}</td>
+                      <td>{reserva.estatus}</td>
+                      <td>${reserva.tarifa.toFixed(2)}</td>
+                      <td>
+                        <button
+                          className="btn btn-edit"
+                          onClick={() => {
+                            setIdCliente(reserva.idCliente);
+                            toggleModal(setIsModalListHuesped, true);
+                          }}
+                        >
+                          <i className="fas fa-users" />
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          className="btn btn-edit"
+                          onClick={() => {
+                            setNumHabitacion(reserva.numHabitacion);
+                            toggleModal(setIsModalListHabitacion, true);
+                          }}
+                        >
+                          <i className="fas fa-bed" />
+                        </button>
+                      </td>
+                      {mostrarAcciones && (
+                        <td>
+                          <button className="btn btn-edit">
+                            <i className="fas fa-edit" />
+                          </button>
+                          {reserva.estatus !== "CONFIRMADA" && (
+                            <button
+                              className="btn btn-edit"
+                              onClick={() => confirmarReserva(reserva.id)}
+                            >
+                              <i className="fas fa-check" />
+                            </button>
+                          )}
+                          <button
+                            className="btn btn-delete"
+                            onClick={() => eliminarReserva(reserva.id)}
+                          >
+                            <i className="fas fa-trash-alt" />
+                          </button>
+                        </td>
+                      )}
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
         </motion.div>
       </AnimatePresence>
     </>
   );
 }
+
+ListReservas.propTypes = {
+  mostrarAcciones: PropTypes.bool,
+  title: PropTypes.string,
+};
